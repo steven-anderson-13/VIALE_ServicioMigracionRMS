@@ -1,0 +1,129 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{7FF5A514-5868-470F-8CFD-4DCE78536326}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>VIALE_ServicioMigracionRMS</RootNamespace>
+    <AssemblyName>VIALE_ServicioMigracionRMS</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>x64</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\..\..\..\..\Instaladores\INSTAL_SERV_MRMS_07_PROD\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Configuration.Install" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.ServiceProcess" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Data\RmsItemRepository.cs" />
+    <Compile Include="Data\RmsRepository.cs" />
+    <Compile Include="Data\RmsVoucherRepository.cs" />
+    <Compile Include="Models\GoodsReceiptReserveInvoiceData.cs" />
+    <Compile Include="Models\GoodsReceiptReserveInvoiceLineData.cs" />
+    <Compile Include="Models\GoodsReceiptReserveInvoiceResult.cs" />
+    <Compile Include="Models\PurchaseOrderHeader.cs" />
+    <Compile Include="Models\PurchaseOrderLine.cs" />
+    <Compile Include="Models\RMSDownPaymentAddressData.cs" />
+    <Compile Include="Models\RMSDownPaymentCustomerData.cs" />
+    <Compile Include="Models\RMSDownPaymentData.cs" />
+    <Compile Include="Models\RMSDownPaymentLineData.cs" />
+    <Compile Include="Models\RMSDownPaymentPaymentData.cs" />
+    <Compile Include="Models\RmsItemData.cs" />
+    <Compile Include="Models\RmsVoucherData.cs" />
+    <Compile Include="Models\SapDocumentResult.cs" />
+    <Compile Include="Models\SapGoodsReceiptResult.cs" />
+    <Compile Include="Models\StockTransferData.cs" />
+    <Compile Include="Models\StockTransferLineData.cs" />
+    <Compile Include="Models\StockTransferResult.cs" />
+    <Compile Include="Models\VoucherHeader.cs" />
+    <Compile Include="Models\VoucherLine.cs" />
+    <Compile Include="Processors\DownPaymentIntegrationProcessor.cs" />
+    <Compile Include="Processors\GoodsReceiptReserveInvoiceIntegrationProcessor.cs" />
+    <Compile Include="Processors\StockTransferIntegrationProcessor.cs" />
+    <Compile Include="ProjectInstaller.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ProjectInstaller.Designer.cs">
+      <DependentUpon>ProjectInstaller.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Repositories\GoodsReceiptReserveInvoiceLogRepository.cs" />
+    <Compile Include="Repositories\RMSDownPaymentLogRepository.cs" />
+    <Compile Include="Repositories\RMSDownPaymentRepository.cs" />
+    <Compile Include="Repositories\SapGoodsReceiptReserveInvoiceRepository.cs" />
+    <Compile Include="Repositories\SapStockTransferRepository.cs" />
+    <Compile Include="Repositories\StockTransferLogRepository.cs" />
+    <Compile Include="SAPCONN.cs" />
+    <Compile Include="Sap\SapBusinessPartnerClient.cs" />
+    <Compile Include="Sap\SapDiApiClient.cs" />
+    <Compile Include="Sap\SapDownPaymentClient.cs" />
+    <Compile Include="Sap\SapGoodsReceiptClient.cs" />
+    <Compile Include="Sap\SapGoodsReceiptReserveInvoiceClient.cs" />
+    <Compile Include="Sap\SapItemClient.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Sap\SapStockTransferClient.cs" />
+    <Compile Include="Services\IntegrationProcessor.cs" />
+    <Compile Include="Services\VoucherIntegrationProcessor.cs" />
+    <Compile Include="ServicioIntegra.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ServicioIntegra.Designer.cs">
+      <DependentUpon>ServicioIntegra.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WindowsService\IntegrationWindowsService.cs">
+      <SubType>Component</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="SAPbobsCOM">
+      <Guid>{FC8030BE-F5D2-4B8E-8F92-44228FE30100}</Guid>
+      <VersionMajor>10</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="ProjectInstaller.resx">
+      <DependentUpon>ProjectInstaller.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
